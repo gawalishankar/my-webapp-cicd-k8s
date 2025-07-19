@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  app:
+    container_name: app_green
+    build: ./backend  # or ./frontend
+    ports:
+      - "8001:8000"
+    environment:
+      - ENV=production
