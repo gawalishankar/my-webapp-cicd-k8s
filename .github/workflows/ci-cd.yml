@@ -34,8 +34,13 @@ jobs:
         script: |
           kubectl apply -f /path/to/k8s/ --namespace=amrutam
 
-    - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
+    - name: Notify Slack on Deployment
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        payload: |
+         {
+           "text": "🚀 Deployment Completed Successfully!"
+         }
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_MESSAGE: "🚀 Deployed latest build to Kubernetes"
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+
