@@ -1,6 +1,7 @@
-FROM python:3.11
+FROM node:18-alpine
 WORKDIR /app
 COPY . .
-RUN pip install -r requirements.txt
-EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+RUN npm install
+RUN npm run build
+EXPOSE 3000
+CMD ["npm", "start"]

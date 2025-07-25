@@ -1,7 +1,6 @@
-FROM node:18-alpine
+FROM python:3.11
 WORKDIR /app
 COPY . .
-RUN npm install
-RUN npm run build
-EXPOSE 3000
-CMD ["npm", "start"]
+RUN pip install -r requirements.txt
+EXPOSE 8000
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
