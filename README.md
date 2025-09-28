@@ -1,98 +1,78 @@
-My Web App CI/CD with Kubernetes
+# 🚀 My Web App CI/CD with Kubernetes
 
-This repository demonstrates a complete CI/CD pipeline for a web application, utilizing GitHub Actions for Continuous Integration (CI), Docker for containerization, and Kubernetes for deployment. The pipeline automates the process of building, testing, and deploying the application, ensuring a streamlined and efficient workflow.
+This repository demonstrates a complete **CI/CD pipeline** for a web application, using **GitHub Actions** for CI, **Docker** for containerization, and **Kubernetes** for deployment. 🐳☸️
 
-Architecture Overview
+## 🏗 Architecture Overview
 
-The architecture includes:
+* **Frontend**: React.js application in the `frontend` directory. ⚛️
+* **Backend**: Python Flask API in the `backend` directory. 🐍
+* **Docker**: Dockerfiles for frontend and backend. 🐳
+* **Kubernetes**: Manifests in the `k8s` directory. ☸️
+* **CI/CD**: GitHub Actions workflows in `.github/workflows`. ⚙️
 
-Frontend: A React.js application located in the frontend directory.
+![CI/CD Pipeline](images/cicd_pipeline.png)
 
-Backend: A Python Flask API located in the backend directory.
+## ✨ Features
 
-Docker: Dockerfiles for both frontend and backend to containerize the applications.
+* ✅ Automated build and test with GitHub Actions.
+* 🐳 Containerization for consistent environments.
+* ☸️ Continuous deployment to Kubernetes.
+* 📈 Scalable deployments using Kubernetes.
 
-Kubernetes: Kubernetes manifests in the k8s directory for deploying the applications.
+## ⚙️ Prerequisites
 
-CI/CD Pipeline: GitHub Actions workflows defined in .github/workflows to automate the build and deployment processes.
+* Docker installed 🐳
+* Kubernetes cluster (Minikube, AKS, or EKS) ☸️
+* kubectl configured 🖥️
+* GitHub repository with secrets for Docker registry and Kubernetes 🔐
 
-Features
+## 🛠 Setup Instructions
 
-Automated Build and Test: GitHub Actions workflows automatically build and test the applications upon code changes.
+### 1️⃣ Clone the Repository
 
-Containerization: Both frontend and backend applications are containerized using Docker, ensuring consistency across environments.
-
-Continuous Deployment: The pipeline deploys the applications to a Kubernetes cluster upon successful build and test.
-
-Scalability: The Kubernetes deployment supports scaling the applications as needed.
-
-Prerequisites
-
-Before setting up the project, ensure you have the following:
-
-Docker installed on your local machine.
-
-Access to a Kubernetes cluster (e.g., Minikube, AKS, EKS).
-
-kubectl configured to interact with your Kubernetes cluster.
-
-GitHub repository with appropriate secrets configured for GitHub Actions.
-
-Setup Instructions
-1. Clone the Repository
+```bash
 git clone https://github.com/gawalishankar/my-webapp-cicd-k8s.git
 cd my-webapp-cicd-k8s
+```
 
-2. Build Docker Images
+### 2️⃣ Build Docker Images
 
-Navigate to the frontend and backend directories and build the Docker images:
-
+```bash
 cd frontend
 docker build -t my-frontend .
 cd ../backend
 docker build -t my-backend .
+```
 
-3. Push Docker Images to Registry
+### 3️⃣ Push Docker Images
 
-Tag and push the images to your preferred Docker registry:
-
+```bash
 docker tag my-frontend your-registry/my-frontend:latest
 docker push your-registry/my-frontend:latest
+
 docker tag my-backend your-registry/my-backend:latest
 docker push your-registry/my-backend:latest
+```
 
-4. Deploy to Kubernetes
+### 4️⃣ Deploy to Kubernetes
 
-Apply the Kubernetes manifests to deploy the applications:
-
+```bash
 kubectl apply -f k8s/
+```
 
-5. Access the Applications
+### 5️⃣ Access Applications
 
-Expose the services to access the applications:
-
+```bash
 kubectl expose deployment frontend --type=LoadBalancer --name=frontend-service
 kubectl expose deployment backend --type=LoadBalancer --name=backend-service
-
-
-Retrieve the external IP addresses:
-
 kubectl get svc
+```
 
+## ⚡ GitHub Actions Workflows
 
-Access the frontend and backend applications using the external IPs provided.
+* **CI Workflow**: Builds and tests applications on push. 🧪
+* **CD Workflow**: Deploys applications to Kubernetes on CI success. 🚀
 
-GitHub Actions Workflows
+## 📄 License
 
-The .github/workflows directory contains the following workflows:
-
-CI Workflow: Triggered on push to the main branch. It builds and tests the applications.
-
-CD Workflow: Triggered on successful completion of the CI workflow. It deploys the applications to the Kubernetes cluster.
-
-Ensure that your GitHub repository has the necessary secrets configured for Docker registry authentication and Kubernetes access.
-
-License
-
-This project is licensed under the MIT License - see the LICENSE
- file for details.
+MIT License
