@@ -10,7 +10,7 @@ This repository demonstrates a complete **CI/CD pipeline** for a web application
 * **Kubernetes**: Manifests in the `k8s` directory. ☸️
 * **CI/CD**: GitHub Actions workflows in `.github/workflows`. ⚙️
 
-![CI/CD Pipeline](images/cicd_pipeline.png)
+![CI/CD Pipeline](Image.png)
 
 ## ✨ Features
 
